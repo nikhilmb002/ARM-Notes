@@ -1,0 +1,295 @@
+1. RISC Philosophy in ARM 
+   
+   ARM processors follow the RISC (Reduced Instruction Set Computer) philosophy
+
+   Core RISC rules followed by ARM 
+
+	1. Simple instructions 
+
+		* Each instruction are mostly 32 bit.
+
+	2. Fixed instruction length 
+
+		* ARM instructions are mostly 32 bit 
+		* Simplifies decoding and improves pipeline efficiency
+
+	3. Load store architecture 
+
+		* only LOAD and STORE instructions access memory
+		* Data processing instructions operate only on registers
+
+	4. Large register set
+
+		* Reduces memory access
+		* Improves  execution speed
+
+	5. Pipeline based execution
+
+		* Multiple instructions are processed simulataneously
+
+2. What is Pipelining ?
+
+	Pipelining is a technique used to incerase instruction throughput 
+	
+	Instead of completing one instruction fully before starting the next, the processor: 
+	
+		* Breaks instruction execution into stages
+		* Executes different stages of different instructions in parallel
+
+3. ARM7 Pipeline Structure 
+
+	1. Fetch (F)
+
+		* Instruction is fetched from memory 
+
+	2. Decode (D)
+
+		* Instruction is decoded 
+		* Required operands are read
+
+	3. Execute (E)
+
+		* ALU Operation is performed
+		* Result is written back 
+
+4. Pipeline Operation (Cycle-by-Cycle)
+
+	Cycle	Instruction1 	Instruction2	Instruction3
+
+	  1	   Fetch	     - 		     - 
+	
+	  2        Decode 	   Fetch	     - 
+
+	  3        Execute	   Decode 	  Fetch
+
+	  4	     -		   Execute	  Decode 
+
+	  5          - 		     -       	  Execute 
+
+
+	After the pipeline is filled, one instruction completes per clock cycle.
+
+	Think of Pipeline as 3 workers 
+
+
+	Worker 			Job
+
+	Worker1			Fetch Instruction
+	Worker2			Decode Instruction
+	Worker3			Execute Instruction
+
+	Each worker works in parallel, but on different instructions.
+
+	Clock pulse = one step forward
+
+	Each clock pulse moves 
+
+		Fetch -> Decode 
+		Decode -> Execute
+		Execute -> Complete
+
+	Step by Step with Clock Pulses 
+
+	Assume instructions : 
+
+		* I1
+		* I2
+		* I3
+
+		🕒 Clock Pulse 1 
+
+			I1 -> Fetch
+		
+		Stage		Instruction
+		
+		Fetch		I1
+		Decode		- 
+		Execute		- 
+
+		Nothing completes yet.
+
+		🕒 Clock Pulse 2 
+
+			I1 -> Decode 
+			I2 -> Fetch
+
+		Stage		Instruction
+		
+		Fetch		I2
+		Decode		I1
+		Execute		- 
+
+		Still nothing completes.
+
+		🕒 Clock Pulse 3
+
+			I1 -> Execute
+			I2 -> Decode
+			I3 -> Fetch
+		
+		Stage 		Instruction
+
+		Fetch		I3
+		Decode		I2
+		Execute 	I1
+		
+		I1 Completes execution here 
+
+		🕒 Clock Pulse 4 
+
+			I2 -> Execute
+			I3 -> Decode
+			I4 -> Fetch
+
+		Stage		Instruction
+
+		Fetch 		I4
+		Decode		I3
+		Execute		I2
+
+		I2 Completes
+
+		🕒 Clock Pulse 5 
+
+			I3 -> Execute
+			I4 -> Decode
+			I5 -> Fetch 
+	
+		I3 Completes 
+
+		After pipeline is filled : 1 instruction complete in Every Clock Pulse
+		
+	Why 1 instruction finishes per clock ?
+
+		* Fetch unit is busy with next instruction
+		* Decode unit is busy with current instruction
+		* Execute unit is busy with previous instruction
+
+			All in the same clock pulse. 
+
+	Visual Summary 
+
+		Clock →   1     2     3     4     5
+		-----------------------------------
+		 I1       F     D     E
+		 I2             F     D     E
+		 I3                   F     D     E
+		 I4                         F     D
+
+
+	What happens inside one clock pulse ?
+
+		During 1 single clock pulse : 
+			
+			* Fetch hardware reads instruction from memory 
+			* Decode hardware decodes previous instruction
+			* ALU executes another instruction
+
+			These are seperate hardware blocks, so no conflict
+
+
+5. Pipeline Speedup 
+
+	Without Pipelining : 
+
+		* Each instruction takes 3 cycles (Fetch + Decode + Execute)
+
+	With Pipelining : 
+
+		* First instruction completes in 3 cycles 
+		* Every subsequent instruction completes in 1 cycle 
+	
+	This significantly imrproves perfomance without increasing clock frequency.
+
+6. Why ARM Pipeline is Efficient ?
+
+	* Fixed instruction length
+	* Simple decoding 
+	* Load store architecture 
+
+	These feature make ARM highly suitable for pipelining 
+
+7. Pipeline Hazards 
+
+	Pipeline hazards occur when the smooth flow of instructions is disturbed
+
+	Types of pipeline hazards : 
+
+		1. Data hazards
+
+			* when an instruction depends on the result of a previous instruction
+
+		2. Control hazards
+
+			* Occur during branch instructions 
+
+		3. Structural hazards 
+		
+			* When hardware resources are insufficient 
+
+8. Pipeline Flush 
+
+	Pipeline flush means clearing all instructions currently in the pipeline 
+
+	Pipeline flush occurs when : 
+
+		1. Branch instruction is executed 
+		2. Exception occurs 
+		3. Interrupt occurs 
+		4. Reset happens 
+
+		if pipeline is flushed, instruction execution restarts from a new address
+
+9. Conditional Execution and pipeline 
+
+	ARM supports conditional execution of instructions 
+
+		* Most instructions can be conditionally executed 
+		* Reduces the need for branch instructions
+		* Helps in reducing pipeline flushes
+
+	This improves overall pipeline efficiency 
+
+10. Effect of Branch Instructions 
+
+	Branch instructions : 
+
+		* Change the normal flow of execution
+		* Cause pipeline to flush 
+		* Reduce pipeline efficiency temporarily
+
+	ARM minimizes this impact using conditional execution
+
+11. Pipelining in RISC vs CISC 
+
+	Feature			RISC (ARM)		CISC
+	
+	Instruction length 	Fixed 			Variable 
+
+	Pipeline efficiency 	High  			Low 
+
+	Decode complexity 	Simple 			Complex
+
+	Performance per watt 	High 			Lower
+
+12. Importance of Pipelining in Embedded Systesm 
+
+	In Embedded Systems : 
+
+		* Perfomance must be high 
+		* Power consumption must be low
+
+	Pipelining allows : 
+
+		* Faster execution	
+		* Lower clock frequency 
+		* Reduced power consumption
+
+13. Summary 
+
+
+	* ARM follows RISC architecture principles.
+	* ARM7 uses a 3 stage pipeline : Fetch, Decode, Execute
+	* Pipelining improves instruction throughput 
+	* Pipeline hazards and flush conditions affect execution
+	* Conditional execution reduces branch penalties 

@@ -1,0 +1,170 @@
+1. What is an ARM Core ?
+
+	The ARM core is the central processing unit that executes instructions. It is responsible for : 
+
+	* Fetching instructions from memory 
+	* Decoding instructions
+	* Executing arithmetic and logical operations
+	* Controlling data flow between registers, memory and peripherals
+
+	In ARM-based systems, the ARM core acts as the heart of the microcontroller or SoC.
+
+2. ARM Based System Overview 
+ 
+   A typical ARM based embedded system consists of : 
+
+	* ARM Core (Processor)
+	* Memory (RAM/ROM/Flash)
+	* Timers
+	* UART
+	* RTC
+	* GPIO
+	* Other peripherals (I2C, SPI, ADC, etc)
+	
+	All these blocks are connected internally through system buses.
+
+3. Major functional blocks inside the ARM core
+
+   The ARM core itself is made up of several internal functional units : 
+
+	1. Register 
+	2. Arithmetic Logic Unit (ALU)
+	3. Barrel Shifter
+	4. Control Unit 
+	5. Pipeline Unit
+	6. Bus Interface Unit 
+
+	Each block plays a specific role in instruction execution. 
+
+4. Register File 
+
+   Purpose of Registers
+ 
+   Registers are high speed storage locations inside the CPU 
+
+   ARM architecture provides : 
+
+	* A large no.of registers
+	* Faster access compared to memory 
+	* Reduced memory access, improving perfomance 
+
+   Types of Registers (Overview)
+
+	* General-purpose registers (R0-R12)
+	* Stack Pointer (R13)
+	* Link Register (R14)
+	* Program Counter (R15)
+	
+5. Arithmetic Logic Unit (ALU)
+
+   The ALU performs all arithmetic and logical operations. 
+
+   Operations performed by ALU : 
+
+	* Addition
+	* Substraction
+	* Logical AND, OR, XOR
+	* Comparison operations 
+
+   The ALU updates condition flags (N, Z, C, V) in the CPSR after execution. 
+
+6. Barrel Shifter 
+
+   One of the most powerful features of ARM architecture is the barallel shifter.
+
+   What is a Barrel Shifter ?
+
+	* A hardware unit that shifts or rotates data in a single clock cycle.
+	* Operates alongside the ALU.
+
+   Types of shifts supported : 
+
+	* Logical Shift Left (LSL)
+	* Logical Shift Right (LSR)
+	* Arithmetic Shift Right (ASR)
+	* Rotate Right (ROR)
+
+   ARM can perform shift + arithmetic operation in one instruction, improving efficiency. 
+
+7. Control Unit 
+
+   The control unit manages the overall operation of the ARM core.
+
+   It is responsible for : 
+
+	* Instruction decoding
+	* Generating control signals 
+	* Managing pipeline flow
+	* Handling exceptions and interrupts
+
+8. Pipeline Unit 
+
+   ARM core users instruction pipelining to improve perfomance.
+
+   In ARM7 : 
+
+	* 3 Stage pipeline : 
+
+		1. Fetch
+		2. Decode
+		3. Execute
+
+	This allows multiple instructions to be processed simultaneously, increasing throughput.
+
+9. Bus Inteface Unit 
+
+   The Bus Interface Unit connects the ARM core to: 
+
+	* Memory 
+	* Peripheral blocks
+
+   It manages : 
+
+	* Instruction fetch
+	* Data read/write operations
+	* Communication with external devices 
+
+   ARM uses a load store architecture, so memory access happens only through load & store instructions. 
+
+10. Memory Interaction with ARM Core 
+
+	* ARM core does not operate directly on memory
+	* Instructions operate on registers
+	* Memory access is done explicitly using load/store instructions 
+
+    This design : 
+
+	* Reduces instruction complexity
+	* Improves execution speed
+
+11. Peripheral Interaction 
+
+    The ARM core controls peripherals using : 
+
+	* Memory mapped I/O
+	* Control and status registers 
+
+    Examples from notes : 
+
+	* UART for serial communication
+	* Timer for delays and scheduling 
+	* RTC for real time clock
+
+    The ARM core writes to and reads from peripheral registers just like normal memory locations. 
+
+12. ARM Core in Embedded Systems 
+
+    In Embedded Systems : 
+
+	* ARM core runs bare metal code or RTOS 
+	* Handles real time constraints 
+	* Interacts continuously with hardware peripherals
+
+	This make ARM ideal for embedded and real time applications
+
+13. Summary 
+
+	* ARM core is the CPU of ARM based systems
+	* It consists of registers, ALU, barrel shifter, control unit, pipeline, and bus interface
+	* Load store architecture ensures efficient memory access
+	* Peripheral interaction is achieved via memory mapped I/O

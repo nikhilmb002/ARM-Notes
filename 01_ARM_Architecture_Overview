@@ -1,0 +1,258 @@
+ARM Architecture Overview
+-------------------------
+
+1. What is ARM ?
+
+	* ARM is a RISC based processor architecture 
+	* It is designed primarily for high perfomance with low power consumption
+	* ARM processors are widely used in embedded systems, mobile devices, IOT, automotive, and consumer electronics
+
+	ARM is designed by ARM Holdings and licensed to semiconductor companies. 
+
+2. ARM as a RISC Processor 
+
+	ARM follows the RISC (Reduced instruction set computer) philosophy.
+
+	Characteristics of RISC followed by ARM : 
+
+		1. Simple instructions 
+
+			* Instructions perform simple operations
+			* Complex operations are broken into multiple instructions 
+
+		2. Fixed-length instructions 
+
+			* Most ARM instructions are 32-bit
+			* This simplifies instruction decoding
+		
+		3. Load-Store architecture 
+
+			* Only LOAD and STORE instructions access memory
+			* All data processing happens inside CPU registers
+		
+		4. Large no.of registers
+
+			* Reduces frequent memory access
+			* Improves execution speed
+		
+		5. Pipelined execution 
+			
+			* Multiple instructions are processed simultaneously in different stages. 
+
+
+3. ARM Processor Block Overview 
+
+	An ARM based system consists of the following major blocks
+
+	* ARM Processor Core
+	* Memory 
+	* Peripherals
+
+	Typical ARM system block diagram 
+
+		* ARM Processor 
+		* Memory 
+		* Timer
+		* UART
+		* ADC 
+
+		These components communicate through internal buses. 
+
+		ARM controller acts as the central controller coordinating all peripherals.
+
+4. System-on-Chip (SoC) Concept
+
+	ARM processors are commonly used in SoC (System on Chip) designs.
+
+
+	What is SOC ?
+
+	A System-on-Chip integrates : 
+
+		* CPU core (ARM)
+		* Memory controllers 
+		* Peripherals
+		* Timers 
+		* Communication interfaces
+
+		All on a single silicon chip 
+
+	Advantages of SoC : 
+
+		* Reduced power consumption
+		* Smaller size 
+		* Lower cost
+		* High reliablity 
+
+	Example of SoC Vendors 
+
+		1. Qualcomm
+		2. Broadcom
+		3. NXP Semiconductors 
+		4. Samsung 
+		5. Texas Instruments 
+
+5. ARM Processor Families 
+
+	ARM architecture is implemented across multiple processor families.
+	
+	Major ARM families mentioned : 
+
+		* ARM7
+		* ARM9
+		* ARM11
+		* Cortex series 
+
+	Each generation improves : 
+	
+		* Perfomance 
+		* Power efficiency 
+		* Instruction handling 
+
+6. ARM Applications
+
+	ARM processors are used in a wide range of applications. 
+
+	Applications 
+
+		1. Mobile phones 
+		2. Raspberry Pi
+		3. BeagleBone Balck
+		4. Embedded boards
+		5. Consumer Electronics 
+
+		ARM is prefferred due to its low power + high efficiency design 
+
+7. ARM vs General-Purpose Processors 
+
+	Feature 		ARM 			General Purpose CPU
+
+	Power consumption	low 	 		High
+	Instruction set 	RISC 			Often CISC 
+	Application 		Embedded, Mobile	PCs, Servers
+	Heat generation		Low 			High
+
+8. Key Advantages of ARM Architecture 
+
+	* Low power consumption
+	* High performance per watt
+	* Compact instruction set
+	* Scalable architecture 
+	* Suitable for real-time systems	
+
+9. Summary 
+
+	* ARM is a RISC based processor architecture.
+	* It uses load-store design, fixed instruction length, and pipelining
+	* ARM is widely used in SoC-based embedded systems.
+	* Its low power consumption makes it ideal for mobile and embedded applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

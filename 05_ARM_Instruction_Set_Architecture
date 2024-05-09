@@ -1,0 +1,374 @@
+1. What is Instruction Set Architecture (ISA) ?
+
+	The Instruction Set Architecture defines : 
+
+		* The set of instructions the processor can execute
+		* Instruction formats and encoding
+		* Registers visible to the programmer
+		* Addressing modes and condition flags
+
+	For ARM7, the primary ISA is the ARM instruction set (32-bit), with optional THUMB (16-bit)
+
+2. Key Features of ARM ISA 
+
+	1. 32-bit fixed-length instructions
+	2. Load-store architecture (memory access only via load/store)
+	3. Conditional execution for most instructions
+	4. Orthogonal instruction set (most instructions work with most register)
+	5. Integrated barrel shifter with data-processing instructions 
+
+	These features enable efficient pipelining and high perfomance per watt.
+
+3. ARM Instruction Format (General)
+
+	Most ARM instructions follow a common 32-bit format : 
+
+		* Condition field (4 bits) - controls conditional execution
+		* Opcode field - specifies the operation
+		* Operands fields - registers or immediate values 
+
+	The condition field allows instructions to execute based on CPSR flags, reducing branches.
+
+4. Condition Codes and Condition Execution
+
+	Condition field (COND)
+
+	The top 4 bits of an ARM instruction specify a condition: 
+
+		Common conditions : 
+
+			* EQ - Equal (Z = 1)
+			* NE - Not Equal (Z = 0)
+			* GT - Greater Than 
+			* LT - Less Than 
+			* AL - Always 
+
+	Advantage : 
+
+		* Reduces branch instructions
+		* Improves pipeline efficiency
+
+	Almost all ARM instructions can be conditionally executed. 
+
+5. Categories of ARM Instructions 
+
+	ARM instructions are grouped into the following major categories:
+
+		1. Data Processing Instructions
+		2. Load and Store Instructions
+		3. Branch Instructions	
+		4. Multiply Instructions
+		5. Software Interrupt Instruction			
+
+6. Data Processing Instructions 
+
+	These instructions perform arithmetic and logical operations.
+
+	Examples : 
+
+		* ADD, SUB
+		* AND, ORR, EOR
+		* MOV, MVN
+		* CMP, TST
+
+	Characteristics : 
+
+		* Operates only on registers
+		* Can use immediate or register operands
+		* Can include a shift operation in the same instruction 
+
+	Result may update CPSR flags if the S bit is set.
+
+7. Barrel Shifter Usage in Instructions 
+
+	ARM allows shift operations to be combined with data processing instructions
+
+	Supported Shifts : 
+
+		LSL – Logical Shift Left
+		LSR – Logical Shift Right
+		ASR – Arithmetic Shift Right
+		ROR – Rotate Right
+
+	Example Concept : 
+
+		ADD R0,R1,R2,LSL #2	
+
+	This performs shift + add in one instruction, increasing efficiency
+
+8. Load and Store Instructions 
+
+	ARM follows a strict load-store architecture 
+
+	Common instructions : 
+
+		LDR : Load register
+		STR : Store register
+
+	Addressing modes : 
+
+		Immediate offset
+		Register offset
+		Pre-indexed
+		Post-indexed
+
+	Only these instructions access memory.
+
+9. Multiple Load and Store Instructions 
+
+	ARM supports block data transfer : 
+
+		LDM - Load Multiple
+		STM - Store Multiple
+
+	Uses : 
+
+		Stack operations
+		Context switching	
+		Fast memory copy
+
+	These instructions improve perfomance by transferring multiple registers in 1 instruction
+
+10. Branch Instructions 
+
+	Branch instructions change program flow
+
+	Types : 
+	
+		B - Branch
+		BL - Branch with Link
+
+	Notes : 
+
+		BL Stores return address in Link Register (R14)
+		Branch instructions cause pipeline flush 
+
+11. Multiply Instructions 
+
+	ARM provides fast multiplication support 
+
+	Instructions : 
+
+		MUL - Multiply
+		MLA - Multiply and accumulate
+
+	ARM7 includes a hardware multiplier, improving execution speed
+
+12. Software Interrupt Instruction (SWI)
+
+	The SWI instruction is used to : 
+
+		* Enter supervisor mode 
+		* Request operating system services
+		* Handle system calls 
+
+	Execution of SWI : 
+
+		* Causes an exception
+		* Jumps to SWI vector address
+
+13. ARM Instruction Execution Flow 
+
+	For any instruction : 
+
+		1. Instruction is fetched 
+		2. Decoded
+		3. Condition is checked
+		4. Executed if condition is true 
+		5. Flags updated (if required)
+
+		If condition fails, instruction s treated as NOP
+
+14. Advantages of ARM Instruction Set 
+
+	* Compact and efficient 
+	* Conditional execution reduces branches 
+	* Powerful addressing modes
+	* High perfomance with low power
+
+15. Summary
+
+	* ARM ISA uses 32 bit fixed length instructions
+	* Instructions are conditionally executed
+	* Load store design seperates memory access from computation
+	* Barrel shifter enhances instruction efficiency
+	* ISA optimized for pipelining and embedded systems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,263 @@
+1. Why ARM has multiple processor families?
+
+	ARM does not manufacture chips. Instead, ARM designs processor architectures and licenses them to semiconductor companies. 
+
+	Differenct applications require different characteristics such as : 
+
+		* Perfomance 
+		* Power consumption
+		* Cost 
+		* Memory footprint
+	
+	To address this, ARM introduced multiple processor families, each optimized for a specific domain.
+
+2. Classification of ARM Processors 
+
+	1. ARM7 family
+	2. ARM9 family
+	3. ARM11 family 
+	4. Cortex family 
+
+	Each generation improves upon the previous one in : 
+
+		* Pipeline depth 
+		* Cache support 
+		* Perfomance 
+		* Power efficiency 
+
+3. ARM7 Family 
+
+	Overview 
+
+	* ARM7 is one of the earliest and most popular ARM cores
+	* It is widely used in embedded systems and microcontroller 
+	* ARM7 is based on RISC architecture
+
+	Key Characteristics 
+
+	* 32-bit processor
+	* Simple architecture 
+	* Low power consumption
+	* Cost effective 
+	
+	ARM7TDMI Core 
+
+	Most ARM7 based chips use the ARM7TDMI core
+	
+	TDMI stands for : 
+
+		* T - THUMB instruction support 
+		* D - On-chip Debug support 
+		* M - Fast Multiplier 
+		* I - Embedded ICE (In-Circuit-Emulator)
+
+	This core is discussed in detail in later chapters
+
+4. ARM9 Family
+
+	Overview 
+
+	* ARM9 is an enhancement over ARM7
+	* It introduces seperate instruction and data caches
+	
+	Key Improvements over ARM7 :
+
+		* Higher clock frequency 
+		* Better perfomance 
+		* Cache memory support
+		* Deeper pipeline 
+
+	Typical Usage 
+
+		* Embedded Linux systems
+		* Multimedia devices 
+		* Networking equipments
+
+5. ARM11 Family
+
+	Overview 
+
+	* ARM11 further improves processing capability
+	* It supports higher instruction throughput 
+
+	Key features :
+
+		* Improved pipeline architecture 
+		* Higher clock speeds
+		* Better mulimedia perfomance
+
+	Applications :
+
+		* Smartphones
+		* High-end embedded systems 
+
+6. Cortex Family
+
+	ARM introduced the cortex series to clearly segment processors based on application type
+
+	Cortex classification : 
+
+		1. Cortex - A : Application processors 
+		2. Cortex - R : Real-time processors 
+		3. Cortex - M : Microcontroller processors
+
+7. Cortex-A Series (Application Processors)
+
+	* Designed for high-perfomance applications
+	* Supports Operating systems like Linux and Android 
+	* Used in 
+		
+		* Smartphones
+		* Tablets
+		* Single board computers
+	
+	Example : Cortex A series in Raspberry pi
+
+8. Cortex-R Series (Real-Time Processors)
+
+	* Designed for real-time applications
+	* Determinstic response time
+	* Used in 
+		
+		* Automotive systems
+		* Hard disk controllers
+		* Industrial control
+
+9. Cortex-M Series (Microcontrollers)
+
+	* Designed for low power and low cost
+	* Optimized for embedded and IoT applications  
+
+	Characteristics : 
+	
+		* Small memory footprint
+		* Fast interrupt handling
+		* Ideal for bare metal and RTOS based systems
+	
+	Common examples : Cortex-M0, Cortex-M3, ..
+
+10. Why ARM7 is still important ?
+
+	Even though newer cores exist : 
+
+		* ARM7 is simple to learn
+		* Ideal for architecture fundamentals
+		* Widely used in academic and training environments 
+
+	It forms the foundation for understanding advanced ARM cores.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
