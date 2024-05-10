@@ -1,0 +1,182 @@
+1. What are program status registers ?
+	
+	Program status registers store status and control information about : 
+
+		* Result of operations 
+		* Current processor mode 
+		* Interrupt enable/disable status
+		* Instruction execution state (ARM/THUMB)
+
+	ARM7 has 2 types of status registers
+
+		1. CPSR :- Current Program status Register 
+		2. SPSR :- Saved Program Status Register 
+
+2. CPSR - Current Program Status Register 
+
+	The CPSR reflects the current state of the processor 
+
+	It contains : 
+
+		* Condition flags 
+		* Interrupt mask bits 
+		* Execution state bit
+		* Processor mode bits 
+	
+	CPSR is updated automatically by the processor during instruction execution
+
+3. CPSR Bit layout (32 bit)
+
+	The CPSR is a 32 bit register divided into fields
+
+		[31:28] – Condition Flags
+
+		[27:8] – Reserved / Control bits
+
+		[7] – I bit (IRQ disable)
+
+		[6] – F bit (FIQ disable)
+
+		[5] – T bit (ARM/THUMB state)
+
+		[4:0] – Mode bits
+
+4. Condition Flags (N, Z, C, V)
+
+	These flags are updated by data processing instructions when the S bit is set.
+
+	N – Negative Flag
+
+		Set if result is negative (MSB = 1)
+
+	Z – Zero Flag
+
+		Set if result is zero
+
+	C – Carry Flag
+
+		Set if carry occurs in addition
+
+		Set if no borrow occurs in subtraction
+
+	V – Overflow Flag
+
+		Set if signed overflow occurs
+
+	These flags are used by conditional execution. 
+
+5. Interrupt Disable Bits
+	
+	I Bit – IRQ Disable
+
+	I = 1 → IRQ disabled
+
+	I = 0 → IRQ enabled
+
+	F Bit – FIQ Disable
+
+	F = 1 → FIQ disabled
+
+	F = 0 → FIQ enabled
+
+	These bits allow software to mask interrupts.
+
+6. T Bit – Execution State Bit
+
+	The T bit selects instruction execution state:
+
+		T = 0 → ARM state (32-bit instructions)
+
+		T = 1 → THUMB state (16-bit instructions)
+
+	This bit changes when:
+
+		BX instruction is executed
+
+		Exception entry or return occurs
+
+7. Mode Bits (M[4:0])
+
+	The lowest 5 bits of CPSR define the processor mode.
+
+	Common mode values:
+		Mode		Binary	Purpose
+		
+		User		10000	Normal application mode
+		FIQ		10001	Fast interrupt mode
+		IRQ		10010	Interrupt mode
+		Supervisor	10011	OS / reset mode
+		Abort		10111	Memory fault handling
+		Undefined	11011	Undefined instruction
+		System		11111	Privileged user mode
+
+8. SPSR – Saved Program Status Register
+
+	The SPSR is used during exception handling.
+
+		* Each exception mode has its own SPSR
+
+		* SPSR stores the previous CPSR value
+
+	This allows the processor to restore state after exception handling.
+
+9. When SPSR Is Used
+
+	During an exception:
+
+		1. Current CPSR is copied to SPSR
+
+		2. Processor switches to exception mode
+
+		3. CPSR is updated for exception handling
+
+	On exception return:
+
+		SPSR is copied back to CPSR
+
+10. Relationship Between CPSR and SPSR
+	
+	CPSR				SPSR
+
+	Holds current processor state	Holds previous state
+	Always present			Only in exception modes
+	Modified during execution	Used only for restoration
+
+	User and System modes do not have SPSR.
+
+11. Accessing CPSR and SPSR
+
+	ARM provides special instructions to access status registers:
+
+		* MRS – Move PSR to register
+
+		* MSR – Move register to PSR
+
+	These instructions allow controlled modification of CPSR fields.
+
+12. Importance of CPSR and SPSR
+
+	Enables conditional execution
+
+	* Controls interrupts
+
+	* Manages processor modes
+
+	* Enables ARM/THUMB switching
+
+	* Essential for exception handling
+
+13. Summary
+
+	* CPSR holds current processor status
+
+	* SPSR saves CPSR during exceptions
+
+	* N, Z, C, V flags control conditional execution
+
+	* I and F bits control interrupts
+
+	* T bit selects ARM or THUMB state
+
+	* Mode bits define processor mode 
+ 

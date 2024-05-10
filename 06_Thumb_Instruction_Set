@@ -1,0 +1,281 @@
+1. What is THUMB ?
+
+	THUMB is a compressed instruction set for ARM processors.
+
+	* THUMB instructions are 16 bit wide
+	* ARM instructions are 32 bit wide 
+
+	THUMB was introduced to : 
+
+		* Reduce program memory usage 
+		* Improve code density 
+		* Make ARM suitable for memory-constrained embedded systems
+
+2. Why THUMB was introduced ?
+
+	Early embedded systems had : 
+
+		* Limited ROM/Flash memory 
+		* Cost constraints 
+		* Power constraints 
+
+	Using 32 bit ARM instructions : 
+
+		* Increased code size 
+		* Increased memory cost 
+
+	THUMB solves this by using shorter instrcutions
+
+3. ARM vs THUMB Instruction Set 
+
+	Feature 		ARM		THUMB
+
+	Instruction length	32 bit 		16 bit 
+	Code Size 		Larger		Smaller
+	Perfomance 		Higher		Slightly lower
+	Instruction flexiblity  More		Limited
+	Memory Usage		High		Low 
+
+4. THUMB Execution State
+
+	ARM processors can operate in 2 instruction executees states : 
+
+		1. ARM State   :- executes 32 bit ARM instructions 
+		2. THUMB state :- executes 16 bit THUMB instructions 
+
+		The processor can be in only one state at a time 
+
+5. Switching Between ARM and THUMB State
+
+	Switching is controlled by the T-bit in the CPSR register.
+
+		T = 0 -> ARM state
+		T = 1 -> THUMB state
+
+	How switching occurs : 
+
+		* Using BX instruction
+		* Branch targer address LSB decides the state
+
+	if LSB = 1 -> THUMB state if LSB = 0 -> ARM State
+
+6. THUMB Instruction Characteristics 
+
+	Key properties of THUMB instructions : 
+
+		* Mostly operate on low registers (R0-R7)
+		* Limited immediate values 
+		* Simplified instruction formats 
+	
+	This simplicity allows smaller instruction encoding
+
+7. THUMB Instruction Categories 
+
+	THUMB instructions are grouped into : 
+
+		1. Move and arithmetic instructions
+		2. Load and store instructions 
+		3. Branch instructions
+		4. Stack related instructions 
+
+	Each category is optimized for compact encoding 
+
+8. THUMB and Perfomance 
+
+	THUMB does not always mean slower execution 
+
+	Reasons : 
+
+		* Better cache utilization
+		* More instructions fit in cache 
+		* Fewer memory fetches 
+
+	In many embedded applications, THUMB can provide equal or better real-world perfomance.
+
+9. THUMB and Power Consumption
+	
+	Using THUMB instructions : 
+
+		* Reduces memory accesses 
+		* Reduces bus activity
+		* Lowers power consumption
+
+	This makes THUMB ideal for : 
+
+		* Battery powered devices
+		* Low power embedded systems
+
+10. Limitations of THUMB
+
+	THUMB has some limitations compared to ARM : 
+
+		* Fewer registers accessible 
+		* Limited instruction set
+		* Less flexible addressing modes 
+
+		For complex operations, ARM state is preferred
+
+11. THUMB in ARM7TDMI
+
+	ARM7TDMI supports both : 
+
+		* ARM instruction set
+		* THUMB instruction set 
+
+	This allows developers to : 
+		
+		* Use ARM for perfomance critical code
+		* Use THUMB for memory critical code 
+
+12. Typical Usage of THUMB 
+
+	THUMB is commonly used in : 
+
+		* Embedded firmware 
+		* Bootloaders 
+		* Interrupt handlers
+		* Memory constrained applications 
+
+13. Summary 
+
+	* THUMB uses 16 bit instructions to reduce code size 
+	* ARM7 can switch dynamically between ARM and THUMB states
+	* T-bit in CPSR controls the execution state
+	* THUMB improces memory efficiency and power consumption
+	* ARM + THUMB together provide flexiblity in embedded design 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

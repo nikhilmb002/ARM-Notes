@@ -1,0 +1,260 @@
+1. Why registers are important ?
+
+	Registers are high speed storagr inside the CPU 
+
+	In ARM architecture 
+
+		* Most operations are performed on registers
+		* Memory access is minimized 
+		* Faster execution is achieved 
+
+	ARM follows a load store architecture, so understanding registers is critical 
+
+2. Overview of ARM7 Registers 
+
+	ARM7 provides 16 programmer visible registers, each 32 bit wide 
+
+	They are named : 
+
+		R0 to R15 
+
+	Each register has a specific role, even though most are general purpose
+
+3. Classification of ARM Registers
+
+	ARM registers can be classified into : 
+
+		1. General Purpose Registers
+		2. Special Purpose Registers 
+		3. Banked Registers
+
+4. General Purpose Registers (R0 - R12)
+
+	R0 - R12 
+
+		* Used for data manipulation 
+		* Used to store operands and results 
+		* Can be freely used by the programer 
+
+	Typical Usage : 
+
+		* R0 - R3  : Function arguments and return values 
+		* R4 - R11 : Local variables 
+		* R12 	   : Intra-procedure scratch register 
+
+5. Special Purpose Registers 
+
+	R13 - Stack Pointer (SP)
+		
+		* Points to the top of the stack 
+		* Used during function calls, interrupts, and exceptions 
+		* Stack usually grows downwards in memory 
+
+	Each processor mode has its own SP.
+
+	R14 - Link Register (LR)
+
+		* Stores the return address during function call 
+		* Automatically updated during BL (Branch with Link) instruction
+
+	On exception entry, LR stores the return address of the interrupted code.
+
+	R15 - Program Counter (PC)
+	
+		* Holds the address of the current instruction
+		* Automatically updated after each instruction
+
+	Important Pipeline behaviour :
+
+		Due to pipelining : 
+
+			* In ARM state, PC = Current instruction address + 8
+			* In THUMB state, PC = Current instruction address +4
+
+		This behaviour is very important for understanding branches and debugging 
+
+6. Banked Registers Concept 
+
+	ARM Supports banked registers to support fast exception handling
+
+	What are banked registers ?
+
+		* Certain registers have seperate physical copies for different modes 
+		* Avoids saving/restoring registers during interrupts 
+		* Improves response time 
+
+7. Processor Modes and Banked registers
+
+	* ARM7 has multiple processor modes : 
+
+		* User 
+		* FIQ 
+		* IRQ
+		* Supervisor (SVC)
+		* Abort
+		* Undefined 
+		* System 
+
+		Some modes have banked versions of 
+
+			* R13 (SP)
+			* R14 (LR)
+
+		FIQ mode also has banked R8-R12
+
+8. Register Banking in FIQ Mode 
+
+	FIQ mode is designed for fast interrupt handling
+
+	Banked registers in FIQ mode : 
+
+		* R8_fiq
+		* R9_fiq
+		* R10_fiq
+		* R11_fiq
+		* R12_fiq
+		* R13_fiq(SP)
+		* R14_fiq(LR)
+
+	This allows FIQ handler to run without saving registers 
+
+9. Visible vs Hidden Registers 
+
+	* Visible register : R0 - R15 (accessible to programmer)
+	* Hidden register  : Banked refgisters (mode - specific)
+
+	The processor automatically selects the correct register register bank based on the current mode. 
+
+10. Register Summary Table 
+
+	Register 	Name		Purpose 
+
+	R0 - R12	GPRs		Data storage and operations
+
+	R13		SP		Stack Pointer
+
+	R14 		LR 		Link Register 
+
+	R15 		PC 		Program Counter 
+
+11. Why ARM Register Organization is Powerful ?
+
+	* Large register set reduces memory access 
+	* Banked registers enable fast interrupt handling 
+	* Dedicated SP and LR simplify function calls 
+
+	This makes ARM efficient for real time embedded systems 
+
+12. Summary 
+
+	* ARM7 has 16 programmer visible 32 bit registers
+	* R0-R12 are general purpose
+	* R13 (SP), R14(LR), and R15(PC) are special purpose 
+	* Banked registers improve interrupt perfomance 
+	* PC behaviour is affected by pipelining 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	

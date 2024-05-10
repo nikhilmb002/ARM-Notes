@@ -1,0 +1,187 @@
+1. What are operating modes ?
+
+	An operating mode defines:
+
+		The privilege level of execution
+
+		Which registers are accessible
+
+		How exceptions and interrupts are handled
+
+	ARM7 supports multiple operating modes to efficiently handle normal execution, interrupts, faults, and system-level tasks.
+
+2. Why ARM uses Multiple Modes ?
+
+	Separate user applications from system code
+
+	Provide fast and safe interrupt handling
+
+	Protect critical system resources
+
+	Enable controlled recovery from faults
+
+     Each mode may have its own banked registers, reducing context switch overhead
+
+3. Classification of ARM7 Operating Modes
+
+	ARM7 operating modes are broadly classified into:
+
+		1. User Mode – Unprivileged
+		2. Privileged Modes – System-level execution
+	
+		Privileged modes include:
+
+			* FIQ
+			* IRQ
+			* Supervisor (SVC)
+			* Abort
+			* Undefined
+			* System
+
+4. User Mode
+
+	Characteristics : 
+
+		* Normal program execution mode 
+		* Unprevileged mode 
+		* Cannot access system control registers 
+		* No SPSR available 
+
+	Usage : 
+
+		* Application-level code 
+		* User programs 
+
+	User mode provides system protection by restricting access to critical resources.
+
+5. System Mode 
+
+	Characteristics : 
+
+		* Previleged mode 
+		* Same register set as User mode 
+		* No SPSR available 
+
+	USage : 
+
+		* Operating system tasks
+		* System-level services
+
+	System mode allows privileged execution while using the same registers as User mode.
+
+6. Supervisor Mode (SVC)
+
+	Characteristics : 
+
+		Privileged mode
+		Has its own SP and LR
+		Has its own SPSR
+
+	Entered When : 
+
+		Reset Occurs
+		Software Interrupt (SWI) instruction is executed
+
+	Usage : 
+
+		Operating system initialization
+		System calls
+	
+	Supervisor mode is the default mode after reset.
+
+7. IRQ Mode (Interrupt Request Mode)
+
+	Characteristics : 
+
+		* Privileged mode 
+		* Has banked SP and LR 
+		* Has SPSR 
+
+	Entered When : 
+
+		* IRQ interrupt occurs 
+
+	Usage : 
+
+		Handling normal interrupts 
+
+	IRQ mode ensures quick response while keeping system execution safe 
+
+	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
